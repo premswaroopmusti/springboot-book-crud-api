@@ -1,6 +1,8 @@
 # Spring Boot Book CRUD API
 
-A simple RESTful API built with Java and Spring Boot to manage a collection of books. This project demonstrates basic CRUD (Create, Read, Update, Delete) operations on a Book resource using Spring Data JPA with an in-memory H2 database.
+A simple RESTful API built with Java and Spring Boot to manage a collection of books. 
+
+This project demonstrates basic CRUD (Create, Read, Update, Delete) operations on a Book resource using Spring Data JPA with an in-memory H2 database.
 
 ---
 
@@ -39,19 +41,28 @@ A simple RESTful API built with Java and Spring Boot to manage a collection of b
 
 1. Clone the repository:
 
-```bash git clone https://github.com/your-username/springboot-book-crud-api.git
+```
+git clone https://github.com/your-username/springboot-book-crud-api.git
+```
 
 2. Navigate into the project directory:
 
+```
 cd springboot-book-crud-api
+```
 
 3. Build and run the application:
 
+```
 mvn spring-boot:run
+```
 
-4. The API will be available at: http://localhost:8080/api/books
+4. The API will be available at:
+```
+http://localhost:8080/api/books
+```
 
-API Endpoints
+### API Endpoints
 
 | HTTP Method | Endpoint          | Description         |
 | ----------- | ----------------- | ------------------- |
@@ -62,17 +73,22 @@ API Endpoints
 | DELETE      | `/api/books/{id}` | Delete a book by ID |
 
 Sample JSON for Creating or Updating a Book
-
+```
 {
-  "title": "Clean Code",
-  "author": "Robert C. Martin",
-  "publishedYear": 2008,
-  "genre": "Programming"
-}
 
+  "title": "Clean Code",
+  
+  "author": "Robert C. Martin",
+  
+  "publishedYear": 2008,
+  
+  "genre": "Programming"
+  
+}
+```
 H2 Console Access
 You can access the H2 database console at:
-
+```
 http://localhost:8080/h2-console
-
+```
 
