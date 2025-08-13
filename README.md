@@ -72,7 +72,7 @@ http://localhost:8080/api/books
 | PUT         | `/api/books/{id}` | Update a book by ID |
 | DELETE      | `/api/books/{id}` | Delete a book by ID |
 
-Sample JSON for Creating or Updating a Book
+Sample JSON for Creating a Book
 ```
 {
 
@@ -86,7 +86,44 @@ Sample JSON for Creating or Updating a Book
   
 }
 ```
-H2 Console Access
+
+## Notes
+
+#### ID Field Handling
+- The `id` field is **auto-generated** by the system.
+- Do **not** include the `id` field in POST (create) request. The server manages this automatically.
+
+#### Handling Not Found Errors
+- If a book with the requested ID is not found, the API returns HTTP status **404 Not Found**.
+
+#### Data Persistence
+- Data is stored temporarily in an **H2 in-memory database**.
+- All data will be lost when the application stops or restarts.
+
+#### Loading Default Data on Startup
+- To load some default books every time the application starts, add a `data.sql` file under `src/main/resources` with SQL insert statements like the following:
+
+```sql
+INSERT INTO book (title, author, published_year, genre)
+VALUES ('To Kill a Mockingbird', 'Harper Lee', 1960, 'Fiction'),
+       ('Indus Valley', 'George Orwell', 1949, 'Dystopian'),
+       ('Pride and Prejudice', 'Jane Austen', 1813, 'Romance'),
+       ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Classic'),
+       ('The Catcher in the Rye', 'J.D. Salinger', 1951, 'Coming-of-Age');
+```
+
+##### Configuration (application.properties)
+```
+properties
+
+spring.jpa.defer-datasource-initialization=true
+```
+spring.jpa.defer-datasource-initialization=true ensures that the data.sql file is run after Hibernate creates the database schema.
+
+
+
+##### H2 Console Access
+
 You can access the H2 database console at:
 ```
 http://localhost:8080/h2-console
